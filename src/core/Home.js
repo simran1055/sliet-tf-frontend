@@ -1,5 +1,5 @@
 import React from 'react'
-import { API } from './backend'
+import { API } from '../backend'
 import Base from './Base'
 function Home() {
     return (
