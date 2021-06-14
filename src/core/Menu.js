@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-function Menu() {
+import { isAuthenticated, signout } from "../auth/helper"
+function Menu({ history }) {
     return (
         <div>
             <ul>
@@ -10,9 +11,16 @@ function Menu() {
                 <li>
                     <Link to="/signin">Sign In</Link>
                 </li>
-                <li>
-                    <Link to="/signout">Sign Out</Link>
-                </li>
+                {
+                    isAuthenticated() && (
+                        <li>
+                            <span onClick={() => signout(() => {
+                                history.push("/")
+                            })}>Sign out</span>
+                        </li>
+                    )
+                }
+
                 <li>
                     <Link to="/signup">Sign Up</Link>
                 </li>
