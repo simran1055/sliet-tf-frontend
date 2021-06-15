@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { isAuthenticated, signout } from "../auth/helper"
 function Menu({ history }) {
@@ -8,9 +8,24 @@ function Menu({ history }) {
                 <li>
                     <Link to="/">Home</Link>
                 </li>
+                {!isAuthenticated() && (
+                    <Fragment>
+                        <li>
+                            <Link to="/signin">Sign In</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/signup">Sign Up</Link>
+                        </li>
+                    </Fragment>)
+                }
                 <li>
-                    <Link to="/signin">Sign In</Link>
+                    <Link to="/user/dashboard">User Dashboard</Link>
                 </li>
+                <li>
+                    <Link to="/admin/dashboard">Admin Dashboard</Link>
+                </li>
+
                 {
                     isAuthenticated() && (
                         <li>
@@ -20,16 +35,6 @@ function Menu({ history }) {
                         </li>
                     )
                 }
-
-                <li>
-                    <Link to="/signup">Sign Up</Link>
-                </li>
-                <li>
-                    <Link to="/user/dashboard">Dashboard</Link>
-                </li>
-                <li>
-                    <Link to="/admin/dashboard">Admin Dashboard</Link>
-                </li>
 
             </ul>
         </div>

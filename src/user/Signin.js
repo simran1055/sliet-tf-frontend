@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Base from '../core/Base'
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import { signin, authenticate, isAuthenticated } from '../auth/helper'
 function Signin() {
     const [values, setValues] = useState({
@@ -24,9 +24,9 @@ function Signin() {
     const performRedirect = () => {
         if (didRedirect) {
             if (user && user.role === 1) {
-                return <p> redirect to admin</p>
+                return <Redirect to="/admin/dashboard" />
             } else {
-                return <p> redirect to user</p>
+                return <Redirect to="/user/dashboard" />
             }
         }
 
