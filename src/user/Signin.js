@@ -23,6 +23,7 @@ function Signin() {
 
     const performRedirect = () => {
         if (didRedirect) {
+            console.log(user)
             if (user && user.role === 1) {
                 return <Redirect to="/admin/dashboard" />
             } else {
@@ -32,7 +33,7 @@ function Signin() {
 
 
         if (isAuthenticated()) {
-            <Redirect to="/" />
+            return <Redirect to="/" />
         }
     }
 
@@ -65,6 +66,7 @@ function Signin() {
 
         signin({ email, password }).then(
             data => {
+
                 if (data.error) {
                     setValues({ ...values, error: data.error, loading: false })
                 } else {
@@ -74,7 +76,7 @@ function Signin() {
 
                 }
             }
-        ).catch(console.log("Error occured"))
+        ).catch("Some error Ocuured")
     }
 
     const signinForm = () => {
@@ -91,11 +93,7 @@ function Signin() {
             {loadingMessage()}
             {errorMessage()}
             {signinForm()}
-            {
-                performRedirect()
-            }
-
-            <p>{JSON.stringify(values)}</p>
+            {performRedirect()}
         </Base>
     )
 }

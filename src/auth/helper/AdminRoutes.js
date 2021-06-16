@@ -8,7 +8,7 @@ function AdminRoutes({ component: Component, ...rest }) {
         <Route
             {...rest}
             render={(props) =>
-                isAuthenticated() && isAuthenticated().data.user.role == 1 ? (
+                isAuthenticated() && isAuthenticated().user.role === 1 ? (
 
                     <Component {...props} />
                 ) : (
