@@ -8,6 +8,9 @@ import Signout from './user/Signout'
 import Signup from './user/Signup'
 import UserDashboard from './user/UserDashboard'
 import AdminDashboard from './user/AdminDashboard'
+import Profile from './user/Profile'
+import SuperAdminRoutes from './auth/helper/SuperAdminRoutes'
+import SuperAdminDashboard from './user/SuperAdminDashboard'
 
 
 function Routes() {
@@ -19,8 +22,10 @@ function Routes() {
                 <Route path="/signup" exact component={Signup}></Route>
                 <Route path="/signin" exact component={Signin}></Route>
                 <Route path="/signout" exact component={Signout}></Route>
+                <SuperAdminRoutes path="/superadmin/dashboard" exact component={SuperAdminDashboard} />
                 <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard} />
                 <PrivateRoute path="/user/dashboard" exact component={UserDashboard} />
+                <PrivateRoute path="/user/dashboard/profile" exact component={Profile} />
 
 
             </Switch>

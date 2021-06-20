@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom"
 import { signin, authenticate, isAuthenticated } from '../auth/helper'
 function Signin() {
     const [values, setValues] = useState({
-        email: "amitojvmc@gmail.com",
-        password: "amitoj",
+        email: "",
+        password: "",
         didRedirect: false,
         error: "",
         loading: false
@@ -23,9 +23,11 @@ function Signin() {
 
     const performRedirect = () => {
         if (didRedirect) {
-            console.log(user)
+            // console.log(user)
             if (user && user.role === 1) {
                 return <Redirect to="/admin/dashboard" />
+            } else if (user && user.role === 2) {
+                return <Redirect to="/superadmin/dashboard" />
             } else {
                 return <Redirect to="/user/dashboard" />
             }

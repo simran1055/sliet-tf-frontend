@@ -20,11 +20,17 @@ function Menu({ history }) {
                     </Fragment>)
                 }
 
-                {isAuthenticated() && isAuthenticated().user.role === 1 ? (
+                {isAuthenticated() && isAuthenticated().user.role === 2 && (
+                    <li>
+                        <Link to="/superadmin/dashboard">Super Admin Dashboard</Link>
+                    </li>
+                )}
+                {isAuthenticated() && isAuthenticated().user.role === 1 && (
                     <li>
                         <Link to="/admin/dashboard">Admin Dashboard</Link>
                     </li>
-                ) : (
+                )}
+                {isAuthenticated() && isAuthenticated().user.role === 0 && (
                     <li>
                         <Link to="/user/dashboard">User Dashboard</Link>
                     </li>
