@@ -24,6 +24,13 @@ function Menu({ history }) {
                     <li>
                         <Link to="/superadmin/dashboard">Super Admin Dashboard</Link>
                     </li>
+
+                )}
+                {isAuthenticated() && isAuthenticated().user.role === 2 && (
+                    <li>
+                        <Link to="/superadmin/coordinator">Coordinator</Link>
+                    </li>
+
                 )}
                 {isAuthenticated() && isAuthenticated().user.role === 1 && (
                     <li>

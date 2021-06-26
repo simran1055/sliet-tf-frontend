@@ -11,6 +11,7 @@ import AdminDashboard from './user/AdminDashboard'
 import Profile from './user/Profile'
 import SuperAdminRoutes from './auth/helper/SuperAdminRoutes'
 import SuperAdminDashboard from './user/SuperAdminDashboard'
+import Coordinator from './superAdmin/Coordinator'
 
 
 function Routes() {
@@ -23,6 +24,7 @@ function Routes() {
                 <Route path="/signin" exact component={Signin}></Route>
                 <Route path="/signout" exact component={Signout}></Route>
                 <SuperAdminRoutes path="/superadmin/dashboard" exact component={SuperAdminDashboard} />
+                <SuperAdminRoutes path="/superadmin/coordinator" exact component={Coordinator} />
                 <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard} />
                 <PrivateRoute path="/user/dashboard" exact component={UserDashboard} />
                 <PrivateRoute path="/user/dashboard/profile" exact component={Profile} />
