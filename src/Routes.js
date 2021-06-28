@@ -19,7 +19,6 @@ function Routes() {
         <BrowserRouter>
 
             <Switch>
-                <Route path="/" exact component={Home}></Route>
                 <Route path="/signup" exact component={Signup}></Route>
                 <Route path="/signin" exact component={Signin}></Route>
                 <Route path="/signout" exact component={Signout}></Route>
@@ -28,6 +27,7 @@ function Routes() {
                 <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard} />
                 <PrivateRoute path="/user/dashboard" exact component={UserDashboard} />
                 <PrivateRoute path="/user/dashboard/profile" exact component={Profile} />
+                <Route path="/" exact component={Home}></Route>
 
 
             </Switch>
