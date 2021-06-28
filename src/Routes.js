@@ -29,7 +29,6 @@ function Routes() {
                 <PrivateRoute path="/user/dashboard/profile" exact component={Profile} />
                 <Route path="/" exact component={Home}></Route>
 
-
             </Switch>
 
         </BrowserRouter>
