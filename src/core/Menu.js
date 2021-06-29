@@ -27,10 +27,14 @@ function Menu({ history }) {
 
                 )}
                 {isAuthenticated() && isAuthenticated().user.role === 2 && (
-                    <li>
-                        <Link to="/superadmin/coordinator">Coordinator</Link>
-                    </li>
-
+                    <>
+                        <li>
+                            <Link to="/superadmin/coordinator">Coordinator</Link>
+                        </li>
+                        <li>
+                            <Link to="/superadmin/adddomain">Add Domain</Link>
+                        </li>
+                    </>
                 )}
                 {isAuthenticated() && isAuthenticated().user.role === 1 && (
                     <li>
