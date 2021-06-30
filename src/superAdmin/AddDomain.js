@@ -15,8 +15,7 @@ const Coordinator = () => {
         domainName: "",
         domainDescription: "",
         studentCoordinator: [],
-        studentCoordinatorVal: "",
-        facultyCoordinatorVal: "",
+
         facultyCoordinator: [],
         photo: "",
 
@@ -30,11 +29,13 @@ const Coordinator = () => {
 
 
     const [coordinators, setCoordinators] = useState([])
+    const [studentCoordinatorVal, setStudentCoordinatorVal] = useState("")
+    const [facultyCoordinatorVal, setFacultyCoordinatorVal] = useState("")
     const {
         domainName,
         domainDescription,
         studentCoordinator,
-        facultyCoordinator, studentCoordinatorVal, facultyCoordinatorVal, photo, loading, error, createdDomain, formData
+        facultyCoordinator, photo, loading, error, createdDomain, formData
     } = values;
 
 
@@ -43,20 +44,21 @@ const Coordinator = () => {
         var value;
         value = name === "photo" ? e.target.files[0] : e.target.value;
         if (name === "studentCoordinator") {
-            let a = [...studentCoordinator];
+            let a = []
             a.push(e.target.value)
             value = a;
-            setValues({ ...setValues, studentCoordinatorVal: e.target.val })
+            setStudentCoordinatorVal(e.target.value)
+            // setValues({ ...setValues, studentCoordinatorVal: e.target.value })
         }
         else if (name === "facultyCoordinator") {
             let a = [];
-            facultyCoordinator.map(fc => {
-                a.push(fc)
-            })
+            // facultyCoordinator.map(fc => {
+            //     a.push(fc)
+            // })
             a.push(e.target.value)
             value = a;
-            console.log(typeof (value))
-            setValues({ ...setValues, facultyCoordinatorVal: e.target.val })
+
+            setFacultyCoordinatorVal(e.target.value)
         }
 
 
@@ -80,14 +82,17 @@ const Coordinator = () => {
                         ...values,
                         domainName: "",
                         domainDescription: "",
-                        studentCoordinator: "",
-                        facultyCoordinator: "",
+                        studentCoordinator: [],
+                        facultyCoordinator: [],
                         photo: "",
                         formData: new FormData(),
                         createdDomain: data.domain1.domainName,
                         loading: false,
                         error: ""
                     });
+
+                    setFacultyCoordinatorVal("");
+                    setStudentCoordinatorVal("");
 
                 }
             })
@@ -113,7 +118,7 @@ const Coordinator = () => {
                 <input type="text" placeholder="Enter your name" name="domainName" value={domainName} onChange={handleInputs} />
 
                 Description:
-                <textarea name="domainDesciption" placeholder="Description" id="description" cols="30"
+                <textarea name="domainDescription" placeholder="Description" id="description" cols="30"
                     rows="10" onChange={handleInputs}>{domainDescription}</textarea>
 
                 <label for="studentCoordinator">Student Coordinator - 1</label>
@@ -125,16 +130,15 @@ const Coordinator = () => {
                             if (coordinator.coordinatorType === "Student")
                                 return (
                                     <option key={index} value={coordinator._id}>
-                                        {index}
                                         {coordinator.coordinatorName}
                                     </option>
                                 );
                         })}
                 </select>
 
-                <label for="studentCoordinator">Student Coordinator - 2</label>
+                {/* <label for="studentCoordinator">Student Coordinator - 2</label> */}
 
-                <select name="studentCoordinator" id="studentCoordinator" value={studentCoordinatorVal} onChange={handleInputs}>
+                {/* <select name="studentCoordinator" id="studentCoordinator" value={studentCoordinatorVal} onChange={handleInputs}>
                     <option value="">Select a student coordinator</option>
                     {coordinators &&
                         coordinators.map((coordinator, index) => {
@@ -145,12 +149,12 @@ const Coordinator = () => {
                                     </option>
                                 );
                         })}
-                </select>
+                </select> */}
 
 
                 <label for="facultyCoordinator">Faculty Coordinator </label>
 
-                <select name="facultyCoordinator" id="facultyCoordinator" value={facultyCoordinator[facultyCoordinator.length - 1]} onChange={handleInputs}>
+                <select name="facultyCoordinator" id="facultyCoordinator" value={facultyCoordinatorVal} onChange={handleInputs}>
                     <option value="">Select a faculty coordinator</option>
                     {coordinators &&
                         coordinators.map((coordinator, index) => {
@@ -214,12 +218,8 @@ const Coordinator = () => {
         <Base title="Coordinator creation page">
 
             {domainForm()}
-            {facultyCoordinator.map(d => {
-                return <p>{JSON.stringify(d)}</p>
-            })}
-            {
-                facultyCoordinatorVal
-            }
+
+
             {successMessage()}
             {errorMessage()}
         </Base>
