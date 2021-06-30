@@ -8,6 +8,7 @@ function Menu({ history }) {
                 <li>
                     <Link to="/">Home</Link>
                 </li>
+
                 {!isAuthenticated() && (
                     <Fragment>
                         <li>
@@ -27,9 +28,14 @@ function Menu({ history }) {
 
                 )}
                 {isAuthenticated() && isAuthenticated().user.role === 2 && (
-                    <li>
-                        <Link to="/superadmin/coordinator">Coordinator</Link>
-                    </li>
+                    <>
+                        <li>
+                            <Link to="/superadmin/coordinator">Coordinator</Link>
+                        </li>
+                        <li>
+                            <Link to="/superadmin/adddomain">Add Domain</Link>
+                        </li>
+                    </>
 
                 )}
                 {isAuthenticated() && isAuthenticated().user.role === 1 && (
@@ -43,6 +49,9 @@ function Menu({ history }) {
                     </li>
                 )}
 
+                <li>
+                    <Link to="/domains">Domains</Link>
+                </li>
 
 
                 {
@@ -56,7 +65,7 @@ function Menu({ history }) {
                 }
 
             </ul>
-        </div>
+        </div >
     )
 }
 

@@ -107,9 +107,9 @@ const Profile = () => {
         return setValues({ ...values, [key]: event.target.value })
     }
     const handleCheck = key => event => {
-        if (key == "whatsappPhoneNumber") {
+        if (key === "whatsappPhoneNumber") {
 
-            if (whatsappPhoneNumberCheck == true) {
+            if (whatsappPhoneNumberCheck === true) {
                 setValues({ ...values, [key]: "" })
             } else {
                 setValues({ ...values, [key]: phone })
@@ -117,9 +117,9 @@ const Profile = () => {
 
             setWhatsappPhoneNumberCheck(!whatsappPhoneNumberCheck);
         }
-        if (key == "telegramPhoneNumber") {
+        if (key === "telegramPhoneNumber") {
 
-            if (telegramPhoneNumberCheck == true) {
+            if (telegramPhoneNumberCheck === true) {
                 setValues({ ...values, [key]: "" })
             } else {
                 setValues({ ...values, [key]: phone })
@@ -173,9 +173,9 @@ const Profile = () => {
                 <input type="email" placeholder="email" value={email} onChange={handleChange("lastName")} />
                 <input type="tel" placeholder="Phone no." value={phone} onChange={handleChange("phone")} />
                 <input type="tel" placeholder="whatsapp Phone no." value={whatsappPhoneNumber} onChange={handleChange("whatsappPhoneNumber")} />
-                <input type="checkbox" checked={phone == whatsappPhoneNumber} onClick={handleCheck("whatsappPhoneNumber")} /> same as phone
+                <input type="checkbox" checked={phone === whatsappPhoneNumber} onClick={handleCheck("whatsappPhoneNumber")} /> same as phone
                 <input type="tel" placeholder="telegram Phone no." value={telegramPhoneNumber} onChange={handleChange("telegramPhoneNumber")} />
-                <input type="checkbox" checked={phone == telegramPhoneNumber} onClick={handleCheck("telegramPhoneNumber")} /> same as phone
+                <input type="checkbox" checked={phone === telegramPhoneNumber} onClick={handleCheck("telegramPhoneNumber")} /> same as phone
                 <input type="text" placeholder="designation" value={designation} onChange={handleChange("designation")} />
                 <input type="date" placeholder="dob" value={dob.toString()} onChange={handleChange("dob")} />
                 <input type="text" placeholder="College Name" value={collegeName} onChange={handleChange("collegeName")} />
